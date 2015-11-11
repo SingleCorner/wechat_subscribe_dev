@@ -21,10 +21,10 @@ def cuser(request):
       xml = etree.fromstring(xml_body)
       toUser = xml.find('FromUserName').text
       timestamp = xml.find('CreateTime').text
-      Message = xml.find('MsgType').text
+      Message = "本条指令暂未被支持"
       MsgType = xml.find('MsgType').text
       if MsgType == "event":
-        Message = "欢迎关注本订阅号" 
+        Message = "欢迎关注单边角落的私人订阅号" 
       else:
         pass
       a = render(request, "text.xml", locals())
