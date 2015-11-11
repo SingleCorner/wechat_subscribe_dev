@@ -1,0 +1,7 @@
+.DS_store*
+*.pyc
+*.pyg
+LISENSE
+weixin/settings.py
+build.sh
+nohup.out
