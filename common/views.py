@@ -25,7 +25,7 @@ def cuser(request):
       if Request == "广告":
         Message = "真正的秒到账pos，养卡套现神器/::B/::B/::B有需要电话联系哦/::B15821303362"
       else:
-        Message = "本条指令暂未被支持"
+        Message = Request
       MsgType = xml.find('MsgType').text
       if MsgType == "event":
         Message = "欢迎关注单边角落的私人订阅号" 
