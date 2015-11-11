@@ -21,6 +21,9 @@ def cuser(request):
       xml = etree.fromstring(xml_body)
       toUser = xml.find('FromUserName').text
       timestamp = xml.find('CreateTime').text
+      Request = xml.find('Content').text
+      if Request == "广告"
+        Message = "真正的秒到账pos，养卡套现神器/::B/::B/::B有需要电话联系哦/::B15821303362"
       Message = "本条指令暂未被支持"
       MsgType = xml.find('MsgType').text
       if MsgType == "event":
