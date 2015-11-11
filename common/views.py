@@ -24,7 +24,7 @@ def cuser(request):
       Message = xml.find('MsgType').text
       MsgType = xml.find('MsgType').text
       if MsgType == "event":
-        Message = "Welcome to subcribe me. " 
+        Message = "欢迎关注本订阅号" 
       else:
         pass
       a = render(request, "text.xml", locals())
