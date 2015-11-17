@@ -22,16 +22,22 @@ def cuser(request):
       toUser = xml.find('FromUserName').text
       timestamp = xml.find('CreateTime').text
       Request = xml.find('Content').text
-      if Request == "广告":
+      if Request == "test":
         Message = "真正的秒到账pos，养卡套现神器/::B/::B/::B有需要电话联系哦/::B15821303362"
       else:
         Message = Request
       MsgType = xml.find('MsgType').text
       if MsgType == "event":
-        Message = "欢迎关注单边角落的私人订阅号" 
+        Message = "欢迎关注单边角落的私人订阅号<br/>测试换行" 
       else:
         pass
       a = render(request, "text.xml", locals())
     except:
       a = ""
   return HttpResponse(a, content_type="text/xml")
+
+def test(request):
+  result = {}
+  result['code'] = 0
+  result['message'] = "操作失败"
+  return HttpResponse(json.dumps(result), content_type="application/json")

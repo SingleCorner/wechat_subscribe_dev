@@ -17,6 +17,7 @@ urlpatterns += patterns('common.views',
 
     
     url(r'^openneer/$', 'cuser'),
+    url(r'^test/$', 'test'),
 )
 
 #urlpatterns += patterns('AutoO.views',
