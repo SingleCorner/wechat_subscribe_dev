@@ -19,8 +19,13 @@ def cuser(request):
     xml = etree.fromstring(xml_body)
     toUser = xml.find('FromUserName').text
     timestamp = xml.find('CreateTime').text
-    Request = xml.find('Content').text
-    command = Request.split(' ')[0]
+    MsgType = xml.find('MsgType').text
+    if MsgType == "text":      
+      Request = xml.find('Content').text
+      command = Request.split(' ')[0]
+    else:
+      Request = ""
+      command = ""
     if Request == "test":
       Message = "真正的秒到账pos，养卡套现神器/::B/::B/::B有需要电话联系哦/::B15821303362"
     else:
@@ -39,9 +44,8 @@ def cuser(request):
             Message = Message + res_data['group'][msg] + "\n"
       else:
         Message = Request
-    MsgType = xml.find('MsgType').text
     if MsgType == "event":
-      Message = "欢迎关注单边角落\n目前已对接http://ops.siner.us\n支持命令\nbind 用户名 密码\ngroup list" 
+      Message = "欢迎关注单边角落\n目前已对接http://ops.siner.us\n支持命令\nbind 用户名 密码\ngroup list"
     response = render(request, "text.xml", locals())
   except:
     Message = "test"
