@@ -37,7 +37,7 @@ def cuser(request):
           for msg in res_data['group']:
             Message = Message + msg.i + "<br>"
       else:
-      Message = Request
+        Message = Request
     MsgType = xml.find('MsgType').text
     if MsgType == "event":
       Message = "欢迎关注单边角落的私人订阅号<br/>测试换行" 
