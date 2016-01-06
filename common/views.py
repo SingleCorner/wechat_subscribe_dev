@@ -24,9 +24,9 @@ def cuser(request):
     if Request == "test":
       Message = "真正的秒到账pos，养卡套现神器/::B/::B/::B有需要电话联系哦/::B15821303362"
     else:
-      if command == "group":
+      if command != "":
         req_url = "http://ops.siner.us/api"
-        req_data = urllib.Request({'wechat_key':toUser, 'request':Request, 'command':command}) 
+        req_data = urllib.urlencode({'wechat_key':toUser, 'request':Request, 'command':command}) 
         req = urllib2.Request(url = requrl,data = req_data)
         res = urllib2.urlopen(req).read()
         res_data = json.loads(res)
@@ -34,38 +34,40 @@ def cuser(request):
           Message = res_data['message']
         else:
           i = 0
+          Message = ""
           for msg in res_data['group']:
-            Message = Message + msg.i + "<br>"
+            Message = Message + res_data['group'][msg] + "\n"
       else:
         Message = Request
     MsgType = xml.find('MsgType').text
     if MsgType == "event":
-      Message = "欢迎关注单边角落的私人订阅号<br/>测试换行" 
+      Message = "欢迎关注单边角落\n目前已对接http://ops.siner.us\n支持命令\nbind 用户名 密码\ngroup list" 
     else:
       pass
-    a = render(request, "text.xml", locals())
+    response = render(request, "text.xml", locals())
   except:
-    toUser = "test"
-    timestamp = 1232232321
+    toUser = ""
+    timestamp = ""
     Request = "group.list"
-    Command = Request.split('.')[0]
+    command = Request.split('.')[0]
     if command == "group":
-      req_url = "http://ops.siner.us/api"
-      req_data = urllib.Request({'wechat_key':toUser, 'request':Request, 'command':command}) 
-      req = urllib2.Request(url = requrl,data = req_data)
+      req_url = "http://localhost:8001/api"
+      req_data = urllib.urlencode({'wechat_key':toUser, 'request':Request, 'command':command}) 
+      req = urllib2.Request(url = req_url,data = req_data)
       res = urllib2.urlopen(req).read()
       res_data = json.loads(res)
       if res_data['code'] == 1:
         Message = res_data['message']
       else:
         i = 0
-        for msg in res_data['group']:
-          Message = Message + msg.i + "<br>"
+        Message = ""
+        for msg in res_data['groups']:
+          Message = Message + res_data['groups'][msg] + "\n"
     else:
       Message = Request
-    MsgType = xml.find('MsgType').text
-    a = render(request, "text.xml", locals())
-  return HttpResponse(a, content_type="text/xml")
+    MsgType = "xml.find('MsgType').text"
+    response = render(request, "text.xml", locals())
+  return HttpResponse(response, content_type="text/xml")
 
 def test(request):
   result = {}
