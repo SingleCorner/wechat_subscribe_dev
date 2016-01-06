@@ -25,7 +25,7 @@ def cuser(request):
       Message = "真正的秒到账pos，养卡套现神器/::B/::B/::B有需要电话联系哦/::B15821303362"
     else:
       if command == "group":
-        req_url = "http://weixin.siner.us/openneer"
+        req_url = "http://ops.siner.us/api"
         req_data = urllib.Request({'wechat_key':toUser, 'request':Request, 'command':command}) 
         req = urllib2.Request(url = requrl,data = req_data)
         res = urllib2.urlopen(req).read()
