@@ -22,18 +22,18 @@ def cuser(request):
     MsgType = xml.find('MsgType').text
     if MsgType == "text":      
       Request = xml.find('Content').text
-    else if MsgType == "event":
+    elif MsgType == "event":
       Request = "welcome"
     else:
       Request = "unsupport"
 
     if Request == "test":
       Message = "真正的秒到账pos，养卡套现神器/::B/::B/::B有需要电话联系哦/::B15821303362"
-    else if Request == "?":
+    elif Request == "?":
       Message = "目前支持的命令\n[1]bind account password\n\n[2]group list"
-    else if Request == "welcome":
+    elif Request == "welcome":
       Message = "欢迎关注本公众号\n目前已对接运维管理系统\nhttp://ops.siner.us\n帮助请输入 ?"
-    else if Request == "unsupport":
+    elif Request == "unsupport":
       Message = "暂时不支持，有问题联系微信CSZ9227"
     else:
       req_url = "http://ops.siner.us/api"
