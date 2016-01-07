@@ -32,7 +32,7 @@ def cuser(request):
       if command == "group":
         req_url = "http://ops.siner.us/api"
         req_data = urllib.urlencode({'wechat_key':toUser, 'request':Request, 'command':command}) 
-        req = urllib2.Request(url = requrl,data = req_data)
+        req = urllib2.Request(url = req_url,data = req_data)
         res = urllib2.urlopen(req).read()
         res_data = json.loads(res)
         if res_data['code'] == 1:
