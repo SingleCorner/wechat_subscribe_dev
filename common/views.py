@@ -56,8 +56,8 @@ def cuser(request):
 
 def test(request):
   result = {}
-  requrl = "http://ops.siner.us/apitest"
-  req_data = urllib.urlencode({'wechat_key':'o4UAIuOcShDerXe0xLaImYfBkfzw', 'command':'group', 'request':'group list' })
+  requrl = "http://localhost:8001/apitest"
+  req_data = urllib.urlencode({'wechat_key':'testkey','request':'group list' })
   req = urllib2.Request(url = requrl,data = req_data)
   res_data = urllib2.urlopen(req).read()
   msg = json.loads(res_data)
