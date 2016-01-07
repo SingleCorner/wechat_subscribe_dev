@@ -50,7 +50,7 @@ def cuser(request):
           Message = Message + res_data['group'][msg] + "\n"
     response = render(request, "text.xml", locals())
   except:
-    Message = "test"
+    Message = "运维平台遇到问题，暂时无法提供服务"
     response = render(request, "text.xml", locals())
   return HttpResponse(response, content_type="text/xml")
 
