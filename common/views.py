@@ -54,11 +54,10 @@ def cuser(request):
 
 def test(request):
   result = {}
-  requrl = "http://localhost:8001/api"
-  req_data = urllib.urlencode({'wechat_key':'gh_ddkjfkjkd', 'command':'group', })
+  requrl = "http://ops.siner.us/apitest"
+  req_data = urllib.urlencode({'wechat_key':'o4UAIuOcShDerXe0xLaImYfBkfzw', 'command':'group', 'request':'group list' })
   req = urllib2.Request(url = requrl,data = req_data)
   res_data = urllib2.urlopen(req).read()
   msg = json.loads(res_data)
-  result['code'] = msg['Token']
-  result['message'] = msg['command']
+  result = msg
   return HttpResponse(json.dumps(result), content_type="application/json")
