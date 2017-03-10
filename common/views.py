@@ -27,9 +27,7 @@ def cuser(request):
     else:
       Request = "unsupport"
 
-    if Request == "test":
-      Message = "真正的秒到账pos，养卡套现神器/::B/::B/::B有需要电话联系哦/::B15821303362"
-    elif Request == "?":
+    if Request == "?":
       Message = "目前支持的命令\n\n[1]bind account password\n[2]group list"
     elif Request == "subscribe":
       Message = "欢迎关注本公众号\n目前已对接运维管理平台\nhttp://ops.siner.us\n需要帮助请输入 ?\n\n开源地址https://github.com/SingleCorner/wechat_subscribe_dev \n\n运维管理平台开源开发\n有合作意向联系微信CSZ9227"
